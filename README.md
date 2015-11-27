@@ -6,4 +6,4 @@ This library is just a porting for composer of [https://gitlab.com/davical-proje
 # Examples of use
 * [https://github.com/dsd-meetme/backend](https://github.com/dsd-meetme/backend)
 
-# By thecsea.it
+# By [thecsea.it](http://thecsea.it)
