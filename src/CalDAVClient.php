@@ -70,7 +70,7 @@ class CalDAVClient {
      * @param string $pass      The password for that user
      * @param string $calendar  The name of the calendar (not currently used)
      */
-    function CalDAVClient( $base_url, $user, $pass, $calendar = '' ) {
+    public function __construct( $base_url, $user, $pass, $calendar = '' ) {
         $this->user = $user;
         $this->pass = $pass;
         $this->calendar = $calendar;
@@ -209,6 +209,7 @@ class CalDAVClient {
 
         $fip = fsockopen( $this->protocol . '://' . $this->server, $this->port, $errno, $errstr, _FSOCK_TIMEOUT); //error handling?
         if ( !(get_resource_type($fip) == 'stream') ) return false;
+        $this->httpRequest."\r\n\r\n".$this->body;
         if ( !fwrite($fip, $this->httpRequest."\r\n\r\n".$this->body) ) { fclose($fip); return false; }
         $rsp = "";
         while( !feof($fip) ) { $rsp .= fgets($fip,8192); }
@@ -342,7 +343,7 @@ class CalDAVClient {
 </C:calendar-query>
 EOXML;
 
-        $this->DoXMLRequest( 'REPORT', $xml, $relative_url );
+        $response = $this->DoXMLRequest( 'REPORT', $xml, $relative_url );
         $xml_parser = xml_parser_create_ns('UTF-8');
         $this->xml_tags = array();
         xml_parser_set_option ( $xml_parser, XML_OPTION_SKIP_WHITE, 1 );
