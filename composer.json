@@ -2,7 +2,7 @@
   "name": "thecsea/caldav-client",
   "type": "library",
   "keywords": ["caldav","client", "simple"],
-  "description": "A simple php caldav client",
+  "description": "Just a simple php caldav client",
   "homepage": "http://www.thecsea.it",
   "minimum-stability": "stable",
   "license": "GPL-2.0",
